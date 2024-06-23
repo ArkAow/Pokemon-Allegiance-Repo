@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bpj1fp1hqiq35"]
+[gd_scene load_steps=47 format=3 uid="uid://bpj1fp1hqiq35"]
 
 [ext_resource type="Texture2D" uid="uid://0lakhh53fq3d" path="res://assets/grass/grass-1.png" id="1_pyhhd"]
 [ext_resource type="Texture2D" uid="uid://chmaxggejlj2g" path="res://assets/grass/grass-2.png" id="2_sm17g"]
@@ -102,22 +102,25 @@ uv1_scale = Vector3(3, 2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_4xw05"]
 material = SubResource("StandardMaterial3D_mabft")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2nioe"]
-albedo_texture = ExtResource("11_5b4ic")
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_yknvv"]
+load_path = "res://.godot/imported/stone_grass-4.png-08d158d4be5300e34b581921f17c01d2.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i5msb"]
+albedo_texture = SubResource("CompressedTexture2D_yknvv")
 uv1_scale = Vector3(3, 2, 1)
 
-[sub_resource type="BoxMesh" id="BoxMesh_t5nvo"]
-material = SubResource("StandardMaterial3D_2nioe")
+[sub_resource type="BoxMesh" id="BoxMesh_qs0hc"]
+material = SubResource("StandardMaterial3D_i5msb")
 
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_mvc5s"]
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rikh5"]
 load_path = "res://.godot/imported/stone-1.png-588d665f0ca9c6fdcfac3d0417b083c5.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afejw"]
-albedo_texture = SubResource("CompressedTexture2D_mvc5s")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_on3cu"]
+albedo_texture = SubResource("CompressedTexture2D_rikh5")
 uv1_scale = Vector3(3, 2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_tu1mp"]
-material = SubResource("StandardMaterial3D_afejw")
+material = SubResource("StandardMaterial3D_on3cu")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4d25o"]
 albedo_texture = ExtResource("12_ja8la")
@@ -238,7 +241,7 @@ shape = SubResource("BoxShape3D_tt1nk")
 
 [node name="StoneGrass4" type="MeshInstance3D" parent="."]
 visible = false
-mesh = SubResource("BoxMesh_t5nvo")
+mesh = SubResource("BoxMesh_qs0hc")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="StoneGrass4"]
 
@@ -255,6 +258,7 @@ mesh = SubResource("BoxMesh_tu1mp")
 shape = SubResource("BoxShape3D_tt1nk")
 
 [node name="Stone2" type="MeshInstance3D" parent="."]
+visible = false
 mesh = SubResource("BoxMesh_6hoc1")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Stone2"]
