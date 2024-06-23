@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://d1y2erhcmoge3"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_r16kj"]
+[ext_resource type="Texture2D" uid="uid://dahiw37c57kx6" path="res://assets/characters/player/player.png" id="2_21wvi"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hwuk0"]
+radius = 0.2
+height = 0.8
+
+[node name="Player" type="CharacterBody3D"]
+script = ExtResource("1_r16kj")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(2.4, 0, 0, 0, 2.36354, -0.173648, 0, 0.416756, 0.984808, 0, 0, 0)
+texture_filter = 0
+texture = ExtResource("2_21wvi")
+hframes = 6
+vframes = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_hwuk0")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-1, 2.99004e-08, -8.21505e-08, 0, 0.939693, 0.34202, 8.74228e-08, 0.34202, -0.939693, 0, 2, -4)
+fov = 60.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+anim_player = NodePath("../AnimationPlayer")
