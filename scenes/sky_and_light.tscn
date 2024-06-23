@@ -1,0 +1,34 @@
+[gd_scene load_steps=6 format=3 uid="uid://dbim3qljfyn1g"]
+
+[sub_resource type="Gradient" id="Gradient_2hoa7"]
+colors = PackedColorArray(0.0941176, 0.180392, 0.560784, 1, 0.0338533, 0.0338533, 0.0338533, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0wvpi"]
+gradient = SubResource("Gradient_2hoa7")
+fill_from = Vector2(1, 0.653061)
+
+[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ph0hx"]
+turbidity = 5.0
+ground_color = Color(0.478682, 0.775686, 0.967687, 1)
+energy_multiplier = 1.5
+night_sky = SubResource("GradientTexture2D_0wvpi")
+
+[sub_resource type="Sky" id="Sky_sp1fr"]
+sky_material = SubResource("PhysicalSkyMaterial_ph0hx")
+
+[sub_resource type="Environment" id="Environment_c47xl"]
+background_mode = 2
+sky = SubResource("Sky_sp1fr")
+ambient_light_source = 3
+tonemap_exposure = 1.3
+fog_light_energy = 1.78
+
+[node name="SkyAndLight" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_c47xl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.707107, -0.684233, -0.178395, 6.45239e-09, -0.252289, 0.967652, -0.707107, -0.684233, -0.178395, 0, 0, 0)
+light_energy = 1.2
+shadow_enabled = true
