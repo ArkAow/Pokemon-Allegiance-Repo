@@ -1,26 +1,26 @@
 [gd_scene load_steps=6 format=3 uid="uid://dbim3qljfyn1g"]
 
-[sub_resource type="Gradient" id="Gradient_2hoa7"]
-colors = PackedColorArray(0.0941176, 0.180392, 0.560784, 1, 0.0338533, 0.0338533, 0.0338533, 1)
+[sub_resource type="Gradient" id="Gradient_5whms"]
+colors = PackedColorArray(0.461991, 0.766799, 1, 1, 0, 0, 0, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_0wvpi"]
-gradient = SubResource("Gradient_2hoa7")
-fill_from = Vector2(1, 0.653061)
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jxh2q"]
+gradient = SubResource("Gradient_5whms")
+fill_from = Vector2(0.969027, 0.539823)
 
-[sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_ph0hx"]
-turbidity = 5.0
-ground_color = Color(0.478682, 0.775686, 0.967687, 1)
-energy_multiplier = 1.5
-night_sky = SubResource("GradientTexture2D_0wvpi")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_nalsj"]
+panorama = SubResource("GradientTexture2D_jxh2q")
 
 [sub_resource type="Sky" id="Sky_sp1fr"]
-sky_material = SubResource("PhysicalSkyMaterial_ph0hx")
+sky_material = SubResource("PanoramaSkyMaterial_nalsj")
 
 [sub_resource type="Environment" id="Environment_c47xl"]
 background_mode = 2
 sky = SubResource("Sky_sp1fr")
 ambient_light_source = 3
 tonemap_exposure = 1.3
+glow_enabled = true
+glow_intensity = 0.4
+glow_bloom = 0.1
 fog_light_energy = 1.78
 
 [node name="SkyAndLight" type="Node3D"]
