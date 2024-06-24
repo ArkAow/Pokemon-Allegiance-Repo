@@ -37,6 +37,6 @@ environment = SubResource("Environment_c47xl")
 camera_attributes = SubResource("CameraAttributesPractical_01o4f")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, -0.684233, -0.178395, 6.45239e-09, -0.252289, 0.967652, -0.707107, -0.684233, -0.178395, 0, 0, 0)
+transform = Transform3D(0.707107, -0.696364, -0.122788, -1.51808e-08, -0.173648, 0.984808, -0.707107, -0.696364, -0.122788, 0, 0, 0)
 light_energy = 1.2
 shadow_enabled = true

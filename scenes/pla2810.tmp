@@ -5,7 +5,7 @@
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hwuk0"]
 radius = 0.2
-height = 0.78
+height = 0.8
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -344,12 +344,10 @@ transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition
 script = ExtResource("1_r16kj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CapsuleShape3D_hwuk0")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.4, 0, 0, 0, 2.36354, 0.173648, 0, -0.416756, 0.984808, 0, 0, 0)
-alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("2_21wvi")
 hframes = 6
