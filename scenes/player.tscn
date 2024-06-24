@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_r16kj"]
 [ext_resource type="Texture2D" uid="uid://dahiw37c57kx6" path="res://assets/characters/player/player.png" id="2_21wvi"]
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_hwuk0"]
-radius = 0.2
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
 height = 0.78
+radius = 0.2
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -345,10 +345,10 @@ script = ExtResource("1_r16kj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
-shape = SubResource("CapsuleShape3D_hwuk0")
+shape = SubResource("CylinderShape3D_oi3op")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
-transform = Transform3D(2.4, 0, 0, 0, 2.36354, 0.173648, 0, -0.416756, 0.984808, 0, 0, 0)
+transform = Transform3D(2.4, 0, 0, 0, 2.4, 0, 0, 0, 1, 0, 0, 0)
 alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("2_21wvi")

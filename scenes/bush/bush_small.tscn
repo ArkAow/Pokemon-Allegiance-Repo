@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://ba5gmyjah2qmm"]
+
+[ext_resource type="Texture2D" uid="uid://dfxde2q7frudu" path="res://assets/bush/bush-2.png" id="1_pv4mq"]
+
+[node name="BushSmall" type="Node3D"]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+alpha_cut = 2
+texture = ExtResource("1_pv4mq")

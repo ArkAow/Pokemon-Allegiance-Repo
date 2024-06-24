@@ -13,6 +13,9 @@ var direction: Vector3
 func _ready():
 	anim_tree.active = true
 
+func _process(delta):
+	if not is_on_floor(): velocity.y -= GRAVITY * delta
+
 func _physics_process(delta):
 	input_direction = Input.get_vector("ui_west","ui_east","ui_north","ui_south")
 	direction = (Vector3(input_direction.x, 0, input_direction.y)).normalized()
@@ -30,6 +33,5 @@ func player_animation():
 
 func player_movement(delta):
 	# All the code's logic to process the player's movement
-	if not is_on_floor(): velocity.y -= GRAVITY * delta
 	if direction: velocity = velocity.move_toward(direction * WALK_SPEED , delta * ACCELERATION)
 	else: velocity = velocity.move_toward(Vector3(0,0,0), delta * FRICTION)
