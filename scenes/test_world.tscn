@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://shpe101c1fmg"]
+[gd_scene load_steps=12 format=3 uid="uid://b02xkytp88ah4"]
 
 [ext_resource type="MeshLibrary" uid="uid://dv1oqxo08darl" path="res://MeshLibrary/world_mesh_lib.tres" id="1_6y8oq"]
 [ext_resource type="PackedScene" uid="uid://dbim3qljfyn1g" path="res://scenes/sky_and_light.tscn" id="1_hxunn"]
@@ -9,6 +9,7 @@
 [ext_resource type="Shader" path="res://scenes/tilt_shift.gdshader" id="4_y3m6a"]
 [ext_resource type="PackedScene" uid="uid://dppe660wl8uy" path="res://scenes/tree/tree_big.tscn" id="5_t2fkx"]
 [ext_resource type="PackedScene" uid="uid://bn5wypn8s1rjd" path="res://scenes/bush/bush_big.tscn" id="6_hnbvv"]
+[ext_resource type="PackedScene" uid="uid://c1ksljtm6ma8w" path="res://scenes/npc_1.tscn" id="10_ewofe"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsqki"]
 shader = ExtResource("4_y3m6a")
@@ -97,3 +98,6 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.33429, 2.28376, -7.03137)
 
 [node name="Player" parent="." instance=ExtResource("2_mhncx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48946, -3)
+
+[node name="Npc_1" parent="." instance=ExtResource("10_ewofe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61126, 1.4, -8.04772)

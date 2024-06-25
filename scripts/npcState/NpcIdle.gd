@@ -1,16 +1,17 @@
 extends NpcState
 class_name NpcIdle
 
-@export var DETECTION_DISTANCE: float = 100.0
+@export var DETECTION_DISTANCE: float = 4.0
 var looking_direction: Vector2
 var idle_time: float
-var player: Player = get_tree().get_first_node_in_group("player")
+var player: Player
 
 #See if the npc has the different state to see the possible transitions
 var npc_has_watch_state = is_state_present("Watch")
 
 func enter():
 	set_npc_state()
+	player = get_tree().get_first_node_in_group("Player")
 	randomize_looking_direction()
 
 func update(delta: float):
@@ -31,5 +32,4 @@ func randomize_looking_direction():
 
 func try_transition_to_watch_state(direction: Vector3):
 	if direction.length() < DETECTION_DISTANCE:
-		if npc_has_watch_state:
-			transitioned.emit(self, "watch")
+		transitioned.emit(self, "watch")

@@ -1,15 +1,16 @@
 extends NpcState
 class_name NpcWatch
 
-@export var DETECTION_DISTANCE: float = 100.0
-var looking_direction: Vector3
-var player: Player = get_tree().get_first_node_in_group("player")
+@export var DETECTION_DISTANCE: float = 4.0
+var looking_direction: Vector2
+var player: Player
 
 #See if the npc has the different state to see the possible transitions
 var npc_has_idle_state = is_state_present("Idle")
 
 func enter():
 	set_npc_state()
+	player = get_tree().get_first_node_in_group("Player")
 
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position
@@ -17,9 +18,9 @@ func physics_update(_delta):
 	process_looking_direction(direction)
 
 func process_looking_direction(direction: Vector3):
-	var look_direction: Vector3 = Vector3(0,0,0)
-	var last_looked_direction: Vector3 = looking_direction
-	
+	var look_direction: Vector2 = Vector2.ZERO
+	var last_looked_direction: Vector2 = looking_direction
+
 	if direction.x < -16:
 		look_direction.x = -1
 	elif direction.x > 16:
@@ -27,10 +28,10 @@ func process_looking_direction(direction: Vector3):
 	else:
 		if last_looked_direction.y == 0:
 			look_direction.x = last_looked_direction.x
-		
-	if direction.y < -16:
+
+	if direction.z < -16:
 		look_direction.y = -1
-	elif direction.y > 16:
+	elif direction.z > 16:
 		look_direction.y = 1
 	else:
 		if look_direction.x == 0:
