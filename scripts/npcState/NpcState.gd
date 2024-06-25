@@ -1,6 +1,7 @@
 extends State
 class_name NpcState
 
+@export var DETECTION_DISTANCE: float = 4.0
 @export var npc: CharacterBody3D
 var anim_tree: AnimationTree
 var state_machine: StateMachine

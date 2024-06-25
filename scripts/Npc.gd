@@ -4,6 +4,7 @@ class_name Npc
 @export var sprite_texture: Texture2D
 @onready var anim_tree = $AnimationTree
 const GRAVITY: float = 9.8
+var looking_direction: Vector2
 
 func _ready():
 	change_skin()
