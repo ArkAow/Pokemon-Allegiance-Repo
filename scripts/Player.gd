@@ -14,7 +14,9 @@ func _ready():
 	anim_tree.active = true
 
 func _process(delta):
-	if not is_on_floor(): velocity.y -= GRAVITY * delta
+	if not is_on_floor(): 
+		velocity.y -= GRAVITY * delta
+		move_and_slide()
 
 func _physics_process(delta):
 	input_direction = Input.get_vector("ui_west","ui_east","ui_north","ui_south")

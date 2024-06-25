@@ -10,8 +10,9 @@ func _ready():
 	anim_tree.active = true
 
 func _process(delta):
-	if not is_on_floor(): velocity.y -= GRAVITY * delta
-	move_and_slide()
+	if not is_on_floor():
+		velocity.y -= GRAVITY * delta
+		move_and_slide()
 
 func change_skin():
 	var sprite = get_node("Sprite3D")
