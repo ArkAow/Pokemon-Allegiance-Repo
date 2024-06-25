@@ -29,9 +29,9 @@ func process_looking_direction(direction: Vector3):
 		if last_looked_direction.y == 0:
 			look_direction.x = last_looked_direction.x
 
-	if direction.z < -0.4:
+	if direction.z < -0.5:
 		look_direction.y = -1
-	elif direction.z > 0.4:
+	elif direction.z > 0.5:
 		look_direction.y = 1
 	else:
 		if look_direction.x == 0:
