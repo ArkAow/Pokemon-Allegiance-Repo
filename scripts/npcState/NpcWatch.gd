@@ -5,12 +5,12 @@ class_name NpcWatch
 var looking_direction: Vector2
 var player: Player
 
-#See if the npc has the different state to see the possible transitions
-var npc_has_idle_state = is_state_present("Idle")
+var npc_has_idle_state: bool
 
 func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
+	npc_has_idle_state = is_state_present("Idle")
 
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position
@@ -21,17 +21,17 @@ func process_looking_direction(direction: Vector3):
 	var look_direction: Vector2 = Vector2.ZERO
 	var last_looked_direction: Vector2 = looking_direction
 
-	if direction.x < -16:
+	if direction.x < -0.4:
 		look_direction.x = -1
-	elif direction.x > 16:
+	elif direction.x > 0.4:
 		look_direction.x = 1
 	else:
 		if last_looked_direction.y == 0:
 			look_direction.x = last_looked_direction.x
 
-	if direction.z < -16:
+	if direction.z < -0.4:
 		look_direction.y = -1
-	elif direction.z > 16:
+	elif direction.z > 0.4:
 		look_direction.y = 1
 	else:
 		if look_direction.x == 0:

@@ -10,8 +10,8 @@ func set_npc_state():
 	state_machine = get_parent()
 
 func is_state_present(state_name: String) -> bool:
-	if state_machine and "states" in state_machine:
-		for state in state_machine.states.values():
-			if state.get_name() == state_name:
-				return true
+	for state in state_machine.states:
+		print(state)
+		if state == state_name.to_lower():
+			return true
 	return false

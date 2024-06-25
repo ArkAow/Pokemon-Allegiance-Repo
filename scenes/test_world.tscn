@@ -100,4 +100,4 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.33429, 2.28376, -7.03137)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48946, -3)
 
 [node name="Npc_1" parent="." instance=ExtResource("10_ewofe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61126, 1.4, -8.04772)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61126, 2, -8.04772)

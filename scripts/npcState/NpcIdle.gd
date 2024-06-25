@@ -7,11 +7,12 @@ var idle_time: float
 var player: Player
 
 #See if the npc has the different state to see the possible transitions
-var npc_has_watch_state = is_state_present("Watch")
+var npc_has_watch_state: bool
 
 func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
+	npc_has_watch_state = is_state_present("Watch")
 	randomize_looking_direction()
 
 func update(delta: float):
@@ -32,4 +33,5 @@ func randomize_looking_direction():
 
 func try_transition_to_watch_state(direction: Vector3):
 	if direction.length() < DETECTION_DISTANCE:
-		transitioned.emit(self, "watch")
+		if npc_has_watch_state:
+			transitioned.emit(self, "watch")
