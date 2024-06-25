@@ -340,7 +340,7 @@ states/Run/position = Vector2(482, 97)
 states/Start/position = Vector2(203, 97)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thaaw")]
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_r16kj")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
