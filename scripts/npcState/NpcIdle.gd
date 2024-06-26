@@ -19,6 +19,7 @@ func update(delta):
 		idle_time -= delta
 	else:
 		randomize_looking_direction()
+		try_transition_to_walk_state()
 
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position
@@ -35,6 +36,10 @@ func try_transition_to_watch_state(direction: Vector3):
 		if npc_has_watch_state:
 			transitioned.emit(self, "watch")
 
+func try_transition_to_walk_state():
+	if npc_has_watch_state:
+		transitioned.emit(self, "walk")
+
 func check_other_states():
-	npc_has_watch_state = is_state_present("Watch")
-	npc_has_walk_state = is_state_present("Walk")
+	npc_has_watch_state = is_state_present("watch")
+	npc_has_walk_state = is_state_present("walk")

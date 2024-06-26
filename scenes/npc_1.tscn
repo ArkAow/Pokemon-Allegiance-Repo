@@ -1,10 +1,11 @@
-[gd_scene load_steps=29 format=3 uid="uid://c1ksljtm6ma8w"]
+[gd_scene load_steps=30 format=3 uid="uid://c1ksljtm6ma8w"]
 
 [ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="1_6wlth"]
 [ext_resource type="Script" path="res://scripts/Npc.gd" id="1_nboj4"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_v73i8"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcIdle.gd" id="3_e4v4y"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcWatch.gd" id="4_uxihp"]
+[ext_resource type="Script" path="res://scripts/npcState/NpcWalk.gd" id="6_h0sbi"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
 height = 0.75
@@ -377,10 +378,14 @@ initial_state = NodePath("Idle")
 
 [node name="Idle" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
 script = ExtResource("3_e4v4y")
-DETECTION_DISTANCE = 3.0
 npc = NodePath("../..")
 
 [node name="Watch" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
 script = ExtResource("4_uxihp")
-DETECTION_DISTANCE = 3.0
+npc = NodePath("../..")
+
+[node name="Walk" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
+script = ExtResource("6_h0sbi")
+walk_distance_max = 3.0
+walk_distance_min = 2.0
 npc = NodePath("../..")

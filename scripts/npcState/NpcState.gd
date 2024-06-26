@@ -1,7 +1,7 @@
 extends State
 class_name NpcState
 
-@export var DETECTION_DISTANCE: float = 4.0
+@export_range(0, 5) var DETECTION_DISTANCE: float = 3.0
 @export var npc: CharacterBody3D
 var anim_tree: AnimationTree
 var state_machine: StateMachine
@@ -12,7 +12,6 @@ func set_npc_state():
 
 func is_state_present(state_name: String) -> bool:
 	for state in state_machine.states:
-		print(state)
 		if state == state_name.to_lower():
 			return true
 	return false

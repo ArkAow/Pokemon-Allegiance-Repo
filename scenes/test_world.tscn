@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b02xkytp88ah4"]
+[gd_scene load_steps=12 format=3 uid="uid://b02xkytp88ah4"]
 
 [ext_resource type="MeshLibrary" uid="uid://dv1oqxo08darl" path="res://MeshLibrary/world_mesh_lib.tres" id="1_6y8oq"]
 [ext_resource type="PackedScene" uid="uid://dbim3qljfyn1g" path="res://scenes/sky_and_light.tscn" id="1_hxunn"]
@@ -10,7 +10,6 @@
 [ext_resource type="PackedScene" uid="uid://dppe660wl8uy" path="res://scenes/tree/tree_big.tscn" id="5_t2fkx"]
 [ext_resource type="PackedScene" uid="uid://bn5wypn8s1rjd" path="res://scenes/bush/bush_big.tscn" id="6_hnbvv"]
 [ext_resource type="PackedScene" uid="uid://c1ksljtm6ma8w" path="res://scenes/npc_1.tscn" id="10_ewofe"]
-[ext_resource type="Texture2D" uid="uid://wm4tvqovvgyq" path="res://assets/characters/npc/green-npc.png" id="11_i7km3"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsqki"]
 shader = ExtResource("4_y3m6a")
@@ -104,7 +103,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48946, -3)
 
 [node name="Npc_1" parent="WorldObjects" instance=ExtResource("10_ewofe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61126, 2, -8.04772)
-
-[node name="Npc_2" parent="WorldObjects" instance=ExtResource("10_ewofe")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.00745, 2, -0.625058)
-sprite_texture = ExtResource("11_i7km3")
