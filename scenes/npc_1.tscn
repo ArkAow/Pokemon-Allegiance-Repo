@@ -376,16 +376,12 @@ parameters/Run/blend_position = Vector2(0.393204, 0.851852)
 script = ExtResource("2_v73i8")
 initial_state = NodePath("Idle")
 
-[node name="Idle" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
+[node name="Idle" type="Node3D" parent="StateMachine"]
 script = ExtResource("3_e4v4y")
-npc = NodePath("../..")
+max_idle_turn = 3
 
-[node name="Watch" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
+[node name="Watch" type="Node3D" parent="StateMachine"]
 script = ExtResource("4_uxihp")
-npc = NodePath("../..")
 
-[node name="Walk" type="Node3D" parent="StateMachine" node_paths=PackedStringArray("npc")]
+[node name="Walk" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_h0sbi")
-walk_distance_max = 3.0
-walk_distance_min = 2.0
-npc = NodePath("../..")

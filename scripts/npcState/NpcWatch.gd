@@ -1,8 +1,6 @@
 extends NpcState
 class_name NpcWatch
 
-var player: Player
-
 #See if the npc has the different state to see the possible transitions
 var npc_has_idle_state: bool
 var npc_has_walk_state: bool

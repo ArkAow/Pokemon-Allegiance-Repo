@@ -1,18 +1,16 @@
 extends NpcState
 class_name NpcWalk
 
-const WALK_SPEED: float = 1.0
-const ACCELERATION: float = 30.0
-const FRICTION: float = 50.0
-const GRAVITY: float = 9.8
-
-@export var walk_distance_max: float
-@export var walk_distance_min: float
+##The maximum walked distance
+@export var walk_distance_max: float = 2
+##The minimum walked distance
+@export var walk_distance_min: float = 1
+##The amount of deviation in the npc trajectory, 5 being +- a lot
 @export_range(0, 5) var walk_deviation: float
+
 var walk_distance: float = 2.0
 var original_pos: Vector3
 var direction: Vector3
-var player: Player
 
 #See if the npc has the different state to see the possible transitions
 var npc_has_watch_state: bool
