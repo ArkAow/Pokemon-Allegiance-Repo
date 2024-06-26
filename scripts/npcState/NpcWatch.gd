@@ -9,6 +9,7 @@ func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	check_other_states()
+	anim_state.travel("Idle")
 
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position

@@ -11,11 +11,13 @@ const GRAVITY: float = 9.8
 @onready var npc: CharacterBody3D = $"../.."
 
 var anim_tree: AnimationTree
+var anim_state
 var state_machine: StateMachine
 var player: Player
 
 func set_npc_state():
 	anim_tree = npc.get_node("AnimationTree")
+	anim_state = anim_tree.get("parameters/playback")
 	state_machine = get_parent()
 
 func is_state_present(state_name: String) -> bool:

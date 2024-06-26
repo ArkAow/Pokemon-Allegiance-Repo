@@ -20,6 +20,7 @@ func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	check_other_states()
+	anim_state.travel("Run")
 	
 	original_pos = npc.global_position
 	npc.looking_direction = Vector2(roundf(randf_range(-1,1)), roundf(randf_range(-1,1)))
@@ -29,22 +30,26 @@ func exit():
 	npc.velocity = Vector3.ZERO
 
 func physics_update(_delta):
-	var player_direction = player.global_position - npc.global_position
-	try_transition_to_watch_state(player_direction)
+	var direction_to_player = player.global_position - npc.global_position
+	try_transition_to_watch_state(direction_to_player)
 
 func update(delta):
 	var walked_distance = (original_pos - npc.global_position).length()
 	if !walk_distance <= walked_distance:
-		if direction:
-			npc.velocity = npc.velocity.move_toward(direction * WALK_SPEED , delta * ACCELERATION)
-	else:
-		npc.velocity = npc.velocity.move_toward(Vector3(0,0,0), delta * FRICTION)
-	if npc.velocity == Vector3.ZERO:
-		try_transition_to_idle_state()
+		if direction: npc.velocity = npc.velocity.move_toward(direction * WALK_SPEED , delta * ACCELERATION)
+	else: npc.velocity = npc.velocity.move_toward(Vector3(0,0,0), delta * FRICTION)
+	if npc and anim_tree: anim_tree.set("parameters/Run/blend_position", npc.looking_direction)
+	try_go_back_base_position(delta)
+	try_transition_to_idle_state()
+
+func try_go_back_base_position(_delta):
+	if ((npc.base_position - npc.global_position).length() > npc.max_distance_from_base_pos):
+		npc.velocity = npc.velocity.move_toward(npc.base_position * WALK_SPEED , _delta * ACCELERATION)
 
 func try_transition_to_idle_state():
-	if npc_has_idle_state:
-		transitioned.emit(self, "idle")
+	if npc.velocity == Vector3.ZERO:
+		if npc_has_idle_state:
+			transitioned.emit(self, "idle")
 
 func try_transition_to_watch_state(direction: Vector3):
 	if direction.length() < DETECTION_DISTANCE:

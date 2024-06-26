@@ -23,6 +23,7 @@ func enter():
 	player = get_tree().get_first_node_in_group("Player")
 	check_other_states()
 	randomize_looking_direction()
+	anim_state.travel("Idle")
 	
 	idle_turns = randi_range(max_idle_turn, min_idle_turn)
 
