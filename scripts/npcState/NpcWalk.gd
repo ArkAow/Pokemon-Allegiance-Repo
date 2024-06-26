@@ -25,6 +25,13 @@ func enter():
 	npc.looking_direction = Vector2(roundf(randf_range(-1,1)), roundf(randf_range(-1,1)))
 	direction = (Vector3(npc.looking_direction.x, 0, npc.looking_direction.y)).normalized()
 
+func exit():
+	npc.velocity = Vector3.ZERO
+
+func physics_update(_delta):
+	var player_direction = player.global_position - npc.global_position
+	try_transition_to_watch_state(player_direction)
+
 func update(delta):
 	var walked_distance = (original_pos - npc.global_position).length()
 	if !walk_distance <= walked_distance:
@@ -38,6 +45,11 @@ func update(delta):
 func try_transition_to_idle_state():
 	if npc_has_idle_state:
 		transitioned.emit(self, "idle")
+
+func try_transition_to_watch_state(direction: Vector3):
+	if direction.length() < DETECTION_DISTANCE:
+		if npc_has_watch_state:
+			transitioned.emit(self, "watch")
 
 func check_other_states():
 	npc_has_watch_state = is_state_present("watch")
