@@ -361,7 +361,7 @@ hframes = 6
 vframes = 4
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
-path_desired_distance = 0.3
+path_desired_distance = 0.2
 target_desired_distance = 0.5
 path_max_distance = 0.51
 debug_enabled = true
