@@ -14,10 +14,10 @@ func enter():
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position
 	try_transition_to_idle_state(direction)
-	process_looking_direction(direction)
+	compute_looking_direction(direction)
 
 #---------Compute Looking Direction---------
-func process_looking_direction(direction: Vector3):
+func compute_looking_direction(direction: Vector3):
 	var look_direction: Vector2 = Vector2.ZERO
 	var last_looked_direction: Vector2 = npc.looking_direction
 

@@ -13,6 +13,7 @@ var walk_distance: float = 2.0
 var original_pos: Vector3
 var target_pos: Vector3
 var direction: Vector3
+var look_direction: Vector2
 
 #See if the npc has the different state to see the possible transitions
 var npc_has_watch_state: bool
@@ -32,18 +33,17 @@ func enter():
 func exit():
 	npc.velocity = Vector3.ZERO
 
-func physics_update(_delta):
-	var distance_to_player = (player.global_position - npc.global_position).length()
-	try_transition_to_watch_state(distance_to_player)
-
-func update(delta):
+func physics_update(delta):
 	compute_direction()
-	var walk_direction = Vector3(direction.x, 0, direction.z)
-	npc.velocity = npc.velocity.lerp(walk_direction * WALK_SPEED , delta * ACCELERATION)
-	if nav.is_target_reached():
-		npc.velocity = npc.velocity.move_toward(Vector3(0,0,0), delta * FRICTION)
-	if npc and anim_tree: anim_tree.set("parameters/Run/blend_position", npc.looking_direction)
+	npc.velocity = npc.velocity.move_toward(direction * WALK_SPEED , delta * ACCELERATION)
+	if nav.is_target_reached() :
+		npc.velocity = npc.velocity.move_toward(Vector3.ZERO, delta * FRICTION)
+
+func update(_delta):
+	compute_lookin_direction()
+	if anim_tree: anim_tree.set("parameters/Run/blend_position", npc.looking_direction)
 	try_transition_to_idle_state()
+	try_transition_to_watch_state()
 
 #---------Compute navigation---------
 func compute_target_position():
@@ -57,8 +57,12 @@ func compute_target_position():
 func compute_direction():
 	if target_pos: 
 		nav.target_position = target_pos
-		direction = nav.get_next_path_position() - original_pos
+		direction = nav.get_next_path_position() - npc.global_position
 		direction = direction.normalized()
+
+#---------Compute Looking Direction---------
+func compute_lookin_direction():
+	pass
 
 #---------Manage States---------
 func try_transition_to_idle_state():
@@ -66,8 +70,9 @@ func try_transition_to_idle_state():
 		if npc_has_idle_state:
 			transitioned.emit(self, "idle")
 
-func try_transition_to_watch_state(distance: float):
-	if distance < DETECTION_DISTANCE:
+func try_transition_to_watch_state():
+	var distance_to_player = (player.global_position - npc.global_position).length()
+	if distance_to_player < DETECTION_DISTANCE:
 		if npc_has_watch_state:
 			transitioned.emit(self, "watch")
 
