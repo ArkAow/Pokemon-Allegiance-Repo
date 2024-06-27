@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://b02xkytp88ah4"]
+[gd_scene load_steps=13 format=3 uid="uid://b02xkytp88ah4"]
 
 [ext_resource type="MeshLibrary" uid="uid://dv1oqxo08darl" path="res://MeshLibrary/world_mesh_lib.tres" id="1_6y8oq"]
 [ext_resource type="PackedScene" uid="uid://dbim3qljfyn1g" path="res://scenes/sky_and_light.tscn" id="1_hxunn"]
@@ -17,6 +17,12 @@ shader_parameter/limit = 0.4
 shader_parameter/blur = 2.0
 shader_parameter/intensity = 0.3
 shader_parameter/debug = false
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_gtjsk"]
+vertices = PackedVector3Array(2.5, 1.5, -3, 3, 1.5, -2.25, 3.5, 1.5, -2.25, 3.5, 1.5, -7.25, -3.25, 1.5, -8.75, -4, 1.5, -8.25, -4, 1.5, -7.75, -3.75, 1.5, -6.5, -3.75, 1.5, -6.5, -5, 1.5, -6.5, -5.25, 1.5, -6.25, -5.25, 1.5, -3.5, -3.5, 1.5, -3.5, -3.75, 1.5, -6.5, -3.5, 1.5, -3.5, -3.25, 1.5, -3, 1.75, 1.5, -3, 3.5, 1.5, -7.25, -3.25, 1.5, -8.75, -6.25, 1.5, -11.25, -6.25, 1.5, -10.5, -3.25, 1.5, -10.25, 4.5, 1.5, -11.25, 3.5, 1.5, -7.25, 4.5, 1.5, -7.5, 4.5, 1.5, -11.25, -3.25, 1.5, -10.25, -3.25, 1.5, -8.75, 1.75, 1.5, -3, 2.5, 1.5, -3, 3.5, 1.5, -7.25, -5.25, 1.5, -7.25, -5.25, 1.5, -6.25, -5, 1.5, -6.5, -5, 1.5, -7.5, -6.25, 1.5, -7.5, -5.25, 1.5, -7.25, -5, 1.5, -7.5, -5, 1.5, -7.5, -4, 1.5, -7.75, -4, 1.5, -8.25, -6.25, 1.5, -8.25, -6.25, 1.5, -7.5, 3.5, 1.5, -2.25, 3, 1.5, -2.25, 2.75, 1.5, -1.5, 3.5, 1.5, 2.5, -2.5, 1.5, 0.5, -2.25, 1.5, 1.5, -1.25, 1.5, 1.75, -1.25, 1.5, 3.25, -2.75, 1.5, 3.75, -2.75, 1.5, 4.5, 1.5, 1.5, 4.5, 1.5, 1.5, 2.75, -3.25, 1.5, -0.75, -4.75, 1.5, -0.25, -4.5, 1.5, 0.75, -2.5, 1.5, 0.5, -3.25, 1.5, -0.75, -2.5, 1.5, 0.5, -1.25, 1.5, 1.75, 3.5, 1.5, 2.5, 2.75, 1.5, -1.5, 1.75, 1.5, -1.5, 1.5, 1.5, 2.75, -1.25, 1.5, 1.75, 1.5, 1.5, 2.75, 1.75, 1.5, -1.5, 1.75, 1.5, -3, -3.25, 1.5, -3, -3.25, 1.5, -0.75, -1.25, 1.5, 1.75, -1.25, 1.5, 3.25, 1.5, 1.5, 2.75, -4.5, 1.5, 0.75, -4.75, 1.5, -0.25, -5.25, 1.5, -0.25, -5.25, 1.5, 4.5, -4.5, 1.5, 3.5, -2.75, 1.5, 4.5, -2.75, 1.5, 3.75, -4.5, 1.5, 3.5, -5.25, 1.5, 4.5)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(9, 8, 10), PackedInt32Array(10, 8, 11), PackedInt32Array(11, 8, 12), PackedInt32Array(14, 13, 15), PackedInt32Array(15, 13, 18), PackedInt32Array(15, 18, 16), PackedInt32Array(16, 18, 17), PackedInt32Array(20, 19, 21), PackedInt32Array(21, 19, 22), PackedInt32Array(24, 23, 25), PackedInt32Array(25, 23, 27), PackedInt32Array(25, 27, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(34, 33, 31), PackedInt32Array(31, 33, 32), PackedInt32Array(37, 36, 35), PackedInt32Array(39, 38, 40), PackedInt32Array(40, 38, 42), PackedInt32Array(40, 42, 41), PackedInt32Array(44, 43, 45), PackedInt32Array(45, 43, 46), PackedInt32Array(48, 47, 49), PackedInt32Array(51, 50, 52), PackedInt32Array(52, 50, 53), PackedInt32Array(53, 50, 54), PackedInt32Array(56, 55, 57), PackedInt32Array(57, 55, 58), PackedInt32Array(61, 60, 59), PackedInt32Array(63, 62, 64), PackedInt32Array(64, 62, 65), PackedInt32Array(71, 70, 66), PackedInt32Array(66, 70, 67), PackedInt32Array(67, 70, 68), PackedInt32Array(68, 70, 69), PackedInt32Array(74, 73, 72), PackedInt32Array(76, 75, 77), PackedInt32Array(77, 75, 79), PackedInt32Array(77, 79, 78), PackedInt32Array(81, 80, 82), PackedInt32Array(82, 80, 83)]
+agent_height = 0.75
+agent_radius = 0.2
 
 [node name="TestWorld" type="Node3D"]
 
@@ -42,7 +48,10 @@ texture = ExtResource("4_r1rhw")
 
 [node name="SkyAndLight" parent="." instance=ExtResource("1_hxunn")]
 
-[node name="GridMap" type="GridMap" parent="."]
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="."]
+navigation_mesh = SubResource("NavigationMesh_gtjsk")
+
+[node name="GridMap" type="GridMap" parent="NavigationRegion3D"]
 mesh_library = ExtResource("1_6y8oq")
 cell_size = Vector3(1, 1, 1)
 data = {
@@ -50,56 +59,56 @@ data = {
 }
 metadata/_editor_floor_ = Vector3(0, 0, 0)
 
-[node name="WorldObjects" type="Node3D" parent="."]
+[node name="WorldObjects" type="Node3D" parent="NavigationRegion3D"]
 
-[node name="Bushes" type="Node3D" parent="WorldObjects"]
+[node name="Bushes" type="Node3D" parent="NavigationRegion3D/WorldObjects"]
 
-[node name="BushBig" parent="WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
+[node name="BushBig" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3, 1.2, -2)
 
-[node name="BushBig2" parent="WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
+[node name="BushBig2" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.4, 1.2, -4.2)
 
-[node name="BushBig3" parent="WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
+[node name="BushBig3" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.5, 1.2, -7.9)
 
-[node name="BushBig4" parent="WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
+[node name="BushBig4" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 2.7, 1.2, -8.5)
 
-[node name="BushBig5" parent="WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
+[node name="BushBig5" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("6_hnbvv")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -4.2, 1.2, -8.6)
 
-[node name="BushMedium" parent="WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
+[node name="BushMedium" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -2.62057, 1.16589, -1.82354)
 
-[node name="BushMedium2" parent="WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
+[node name="BushMedium2" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -3.82057, 1.16589, -0.823545)
 
-[node name="BushMedium3" parent="WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
+[node name="BushMedium3" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("3_mlf72")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.17943, 1.16589, -8.12354)
 
-[node name="BushSmall" parent="WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
+[node name="BushSmall" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, -1.2, 1.1, -6)
 
-[node name="BushSmall2" parent="WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
+[node name="BushSmall2" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0.1, 1.1, -5.2)
 
-[node name="BushSmall3" parent="WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
+[node name="BushSmall3" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 3.1, 1.1, -3.5)
 
-[node name="BushSmall4" parent="WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
+[node name="BushSmall4" parent="NavigationRegion3D/WorldObjects/Bushes" instance=ExtResource("4_vrks7")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 1.1, 1.1, -1.5)
 
-[node name="Trees" type="Node3D" parent="WorldObjects"]
+[node name="Trees" type="Node3D" parent="NavigationRegion3D/WorldObjects"]
 
-[node name="TreeBig" parent="WorldObjects/Trees" instance=ExtResource("5_t2fkx")]
+[node name="TreeBig" parent="NavigationRegion3D/WorldObjects/Trees" instance=ExtResource("5_t2fkx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.18479, 2.28376, -2.18195)
 
-[node name="TreeBig2" parent="WorldObjects/Trees" instance=ExtResource("5_t2fkx")]
+[node name="TreeBig2" parent="NavigationRegion3D/WorldObjects/Trees" instance=ExtResource("5_t2fkx")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -4.33429, 2.28376, -7.03137)
 
-[node name="Player" parent="WorldObjects" instance=ExtResource("2_mhncx")]
+[node name="Player" parent="NavigationRegion3D/WorldObjects" instance=ExtResource("2_mhncx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48946, -3)
 
-[node name="Npc_1" parent="WorldObjects" instance=ExtResource("10_ewofe")]
+[node name="Npc_1" parent="NavigationRegion3D/WorldObjects" instance=ExtResource("10_ewofe")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.61126, 2, -8.04772)
