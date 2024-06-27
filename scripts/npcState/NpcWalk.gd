@@ -38,6 +38,7 @@ func physics_update(_delta):
 	try_transition_to_watch_state(distance_to_player)
 
 func update(delta):
+	print(npc.velocity)
 	var walked_distance = (original_pos - npc.global_position).length()
 	if !walk_distance <= walked_distance:
 		npc.velocity = npc.velocity.lerp(direction * WALK_SPEED , delta * ACCELERATION)
@@ -62,10 +63,13 @@ func check_other_states():
 
 func compute_direction():
 	if target_pos: 
-		nav.target_position = target_pos
+		#If too far from spawn, go back
+		if (npc.global_position - npc.spawn_position).length() > npc.max_distance_from_base_pos:
+			nav.target_position = npc.spawn_position
+		else:
+			nav.target_position = target_pos
 		direction = (nav.get_next_path_position()-original_pos).normalized()
-		print(direction)
-		if !((roundf(direction.x) >= 0) && (roundf(direction.z == 0))):
+		if !(direction.y == 1):
 			return
 	#if the target_pos the npc want to go to isnt valid, stop it
 	walk_distance = 0

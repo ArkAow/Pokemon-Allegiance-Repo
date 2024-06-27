@@ -8,12 +8,12 @@ class_name Npc
 @onready var anim_tree = $AnimationTree
 const GRAVITY: float = 9.8
 var looking_direction: Vector2 = Vector2.ZERO
-var base_position: Vector3
+var spawn_position: Vector3
 
 func _ready():
 	change_skin()
 	anim_tree.active = true
-	base_position = Vector3(global_position.x, 0, global_position.z)
+	spawn_position = Vector3(global_position.x, 0, global_position.z)
 
 func _process(delta):
 	if not is_on_floor():
