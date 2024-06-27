@@ -16,6 +16,7 @@ func physics_update(_delta):
 	try_transition_to_idle_state(direction)
 	process_looking_direction(direction)
 
+#---------Compute Looking Direction---------
 func process_looking_direction(direction: Vector3):
 	var look_direction: Vector2 = Vector2.ZERO
 	var last_looked_direction: Vector2 = npc.looking_direction
@@ -39,6 +40,7 @@ func process_looking_direction(direction: Vector3):
 	npc.looking_direction = look_direction
 	anim_tree.set("parameters/Idle/blend_position", npc.looking_direction)
 
+#---------Manage States---------
 func try_transition_to_idle_state(direction: Vector3):
 	if direction.length() > DETECTION_DISTANCE:
 		if npc_has_idle_state:
