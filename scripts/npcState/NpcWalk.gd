@@ -13,7 +13,6 @@ var walk_distance: float = 2.0
 var original_pos: Vector3
 var target_pos: Vector3
 var direction: Vector3
-var look_direction: Vector2
 
 #See if the npc has the different state to see the possible transitions
 var npc_has_watch_state: bool
@@ -40,7 +39,7 @@ func physics_update(delta):
 		npc.velocity = npc.velocity.move_toward(Vector3.ZERO, delta * FRICTION)
 
 func update(_delta):
-	compute_lookin_direction()
+	compute_looking_direction()
 	if anim_tree: anim_tree.set("parameters/Run/blend_position", npc.looking_direction)
 	try_transition_to_idle_state()
 	try_transition_to_watch_state()
@@ -61,8 +60,24 @@ func compute_direction():
 		direction = direction.normalized()
 
 #---------Compute Looking Direction---------
-func compute_lookin_direction():
-	pass
+func compute_looking_direction():
+	var look_direction: Vector2 = Vector2.ZERO
+	var last_looked_direction: Vector2 = npc.looking_direction
+	if direction.x < -0.4:
+		look_direction.x = -1
+	elif direction.x > 0.4:
+		look_direction.x = 1
+	else:
+		if last_looked_direction.y == 0:
+			look_direction.x = last_looked_direction.x
+	if direction.z < -0.5:
+		look_direction.y = -1
+	elif direction.z > 0.5:
+		look_direction.y = 1
+	else:
+		if look_direction.x == 0:
+			look_direction.y = last_looked_direction.y
+	npc.looking_direction = look_direction
 
 #---------Manage States---------
 func try_transition_to_idle_state():
