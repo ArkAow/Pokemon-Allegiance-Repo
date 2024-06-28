@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://c1ksljtm6ma8w"]
+[gd_scene load_steps=32 format=3 uid="uid://c1ksljtm6ma8w"]
 
 [ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="1_6wlth"]
 [ext_resource type="Script" path="res://scripts/Npc.gd" id="1_nboj4"]
@@ -10,6 +10,16 @@
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
 height = 0.75
 radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
+material = SubResource("StandardMaterial3D_3qaxa")
+radius = 3.0
+height = 6.0
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -359,6 +369,9 @@ texture_filter = 0
 texture = ExtResource("1_6wlth")
 hframes = 6
 vframes = 4
+
+[node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_bhmrk")
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2
