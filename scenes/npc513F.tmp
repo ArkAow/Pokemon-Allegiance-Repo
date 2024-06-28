@@ -403,4 +403,4 @@ script = ExtResource("6_h0sbi")
 
 [node name="Wait" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_heymw")
-base_look_direction = Vector2(0, -1)
+base_look_direction = Vector2(1, 0)

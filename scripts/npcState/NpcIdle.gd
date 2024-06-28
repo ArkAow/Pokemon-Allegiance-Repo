@@ -36,8 +36,7 @@ func update(delta):
 		try_transition_to_walk_state()
 
 func physics_update(_delta):
-	var direction = player.global_position - npc.global_position
-	try_transition_to_watch_state(direction)
+	try_transition_to_watch_state()
 
 #---------Compute Looking Direction---------
 func randomize_looking_direction():
@@ -47,7 +46,8 @@ func randomize_looking_direction():
 	idle_time = randf_range(min_idle_time, max_idle_time)
 
 #---------Manage States---------
-func try_transition_to_watch_state(direction: Vector3):
+func try_transition_to_watch_state():
+	var direction = player.global_position - npc.global_position
 	if direction.length() < DETECTION_DISTANCE:
 		if npc_has_watch_state:
 			transitioned.emit(self, "watch")
