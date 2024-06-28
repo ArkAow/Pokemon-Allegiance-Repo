@@ -21,12 +21,10 @@ var npc_has_idle_state: bool
 func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
-	check_other_states()
 	anim_state.travel("Run")
 	
 	walk_distance = randf_range(walk_distance_min, walk_distance_max)
 	original_pos = npc.global_position
-	npc.looking_direction = Vector2(roundf(randf_range(-1,1)), roundf(randf_range(-1,1)))
 	compute_target_position()
 
 func exit():
@@ -39,7 +37,7 @@ func physics_update(delta):
 		npc.velocity = npc.velocity.move_toward(Vector3.ZERO, delta * FRICTION)
 
 func update(_delta):
-	compute_looking_direction()
+	npc.compute_looking_direction(direction)
 	if anim_tree: anim_tree.set("parameters/Run/blend_position", npc.looking_direction)
 	try_transition_to_idle_state()
 	try_transition_to_watch_state()
@@ -58,26 +56,6 @@ func compute_direction():
 		nav.target_position = target_pos
 		direction = nav.get_next_path_position() - npc.global_position
 		direction = direction.normalized()
-
-#---------Compute Looking Direction---------
-func compute_looking_direction():
-	var look_direction: Vector2 = Vector2.ZERO
-	var last_looked_direction: Vector2 = npc.looking_direction
-	if direction.x < -0.4:
-		look_direction.x = -1
-	elif direction.x > 0.4:
-		look_direction.x = 1
-	else:
-		if last_looked_direction.y == 0:
-			look_direction.x = last_looked_direction.x
-	if direction.z < -0.5:
-		look_direction.y = -1
-	elif direction.z > 0.5:
-		look_direction.y = 1
-	else:
-		if look_direction.x == 0:
-			look_direction.y = last_looked_direction.y
-	npc.looking_direction = look_direction
 
 #---------Manage States---------
 func try_transition_to_idle_state():

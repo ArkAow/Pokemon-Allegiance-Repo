@@ -19,6 +19,7 @@ func set_npc_state():
 	anim_tree = npc.get_node("AnimationTree")
 	anim_state = anim_tree.get("parameters/playback")
 	state_machine = get_parent()
+	check_other_states()
 
 func is_state_present(state_name: String) -> bool:
 	for state in state_machine.states:

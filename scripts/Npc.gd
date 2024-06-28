@@ -24,3 +24,25 @@ func change_skin():
 	var sprite = get_node("Sprite3D")
 	if sprite_texture:
 		sprite.set_texture(sprite_texture)
+
+#---------Compute Looking Direction---------
+func compute_looking_direction(_direction: Vector3):
+	var look_direction: Vector2 = Vector2.ZERO
+	var last_looked_direction: Vector2 = looking_direction
+
+	if _direction.x < -0.4:
+		look_direction.x = -1
+	elif _direction.x > 0.4:
+		look_direction.x = 1
+	else:
+		if last_looked_direction.y == 0:
+			look_direction.x = last_looked_direction.x
+
+	if _direction.z < -0.5:
+		look_direction.y = -1
+	elif _direction.z > 0.5:
+		look_direction.y = 1
+	else:
+		if look_direction.x == 0:
+			look_direction.y = last_looked_direction.y
+	looking_direction = look_direction
