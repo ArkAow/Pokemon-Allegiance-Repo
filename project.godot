@@ -51,6 +51,10 @@ ui_west={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="Characters"
+
 [navigation]
 
 3d/default_cell_size=0.2
