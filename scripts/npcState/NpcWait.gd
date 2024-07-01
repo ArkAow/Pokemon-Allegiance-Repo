@@ -9,14 +9,12 @@ var npc_has_walk_state: bool
 var npc_has_idle_state: bool
 
 func enter():
-	print("enter wait")
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	anim_state.travel("Idle")
-	compute_waiting_direction()
 
-func exit():
-	print("exit wait")
+	await get_tree().create_timer(0.5).timeout
+	compute_waiting_direction()
 
 func update(_delta):
 	try_transition_to_watch_state()
