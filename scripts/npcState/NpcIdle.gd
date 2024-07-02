@@ -41,7 +41,8 @@ func physics_update(_delta):
 #---------Compute Looking Direction---------
 func randomize_looking_direction():
 	if npc and anim_tree:
-		npc.looking_direction = Vector2(roundf(randf_range(-1,1)), roundf(randf_range(-1,1)))
+		var direction = Vector2(roundf(randf_range(-1,1)), roundf(randf_range(-1,1)))
+		npc.compute_looking_direction(direction)
 		anim_tree.set("parameters/Idle/blend_position", npc.looking_direction)
 	idle_time = randf_range(min_idle_time, max_idle_time)
 

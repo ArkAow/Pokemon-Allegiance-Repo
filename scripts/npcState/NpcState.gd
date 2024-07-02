@@ -8,6 +8,8 @@ const GRAVITY: float = 9.8
 
 ##The range, in meter, at which the npc can detect the player
 @export_range(0, 5) var DETECTION_DISTANCE: float = 3.0
+@export_range(0, 5) var LINE_DETECTION_DISTANCE: float = 3.0
+@export_range(0, 2) var LINE_DETECTION_WIDTH: float = 1.0
 @onready var npc: CharacterBody3D = $"../.."
 
 var anim_tree: AnimationTree
