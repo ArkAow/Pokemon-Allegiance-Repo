@@ -13,21 +13,21 @@ func enter():
 
 func physics_update(_delta):
 	var direction = player.global_position - npc.global_position
-	try_transition_to_idle_state(direction) #Be careful : idle has priority on wait
-	try_transition_to_wait_state(direction)
+	try_transition_to_idle_state() #Be careful : idle has priority on wait
+	try_transition_to_wait_state()
 	npc.compute_looking_direction(direction)
 	anim_tree.set("parameters/Idle/blend_position", npc.looking_direction)
 
 #---------Manage States---------
-func try_transition_to_idle_state(direction: Vector3):
-	if direction.length() > DETECTION_DISTANCE:
-		if npc_has_idle_state:
+func try_transition_to_idle_state():
+	if npc_has_idle_state:
+		if !npc.can_see_player():
 			transitioned.emit(self, "idle")
 
 #---------Manage States---------
-func try_transition_to_wait_state(direction: Vector3):
-	if direction.length() > DETECTION_DISTANCE:
-		if npc_has_wait_state:
+func try_transition_to_wait_state():
+	if npc_has_wait_state:
+		if !npc.can_see_player():
 			transitioned.emit(self, "wait")
 
 func check_other_states():

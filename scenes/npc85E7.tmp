@@ -11,6 +11,16 @@
 height = 0.75
 radius = 0.2
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
+material = SubResource("StandardMaterial3D_3qaxa")
+radius = 3.0
+height = 6.0
+
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
 tracks/0/type = "value"
@@ -344,16 +354,6 @@ states/Run/position = Vector2(482, 97)
 states/Start/position = Vector2(203, 97)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thaaw")]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
-
-[sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
-material = SubResource("StandardMaterial3D_3qaxa")
-radius = 3.0
-height = 6.0
-
 [node name="Npc_1" type="CharacterBody3D"]
 script = ExtResource("1_nboj4")
 sprite_texture = ExtResource("1_6wlth")
@@ -361,6 +361,15 @@ sprite_texture = ExtResource("1_6wlth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
+
+[node name="PlayerDetectionRange" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
+shape = SubResource("CylinderShape3D_oi3op")
+
+[node name="DebugDetectionRange" type="MeshInstance3D" parent="PlayerDetectionRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.009, 0)
+mesh = SubResource("SphereMesh_bhmrk")
+skeleton = NodePath("../..")
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 3)
@@ -406,6 +415,3 @@ script = ExtResource("6_h0sbi")
 [node name="Wait" type="Node3D" parent="StateMachine"]
 script = ExtResource("6_heymw")
 base_look_direction = Vector2(0, -1)
-
-[node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_bhmrk")

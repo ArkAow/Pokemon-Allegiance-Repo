@@ -28,9 +28,8 @@ func compute_waiting_direction():
 
 #---------Manage States---------
 func try_transition_to_watch_state():
-	var direction = player.global_position - npc.global_position
-	if direction.length() < DETECTION_DISTANCE:
-		if npc_has_watch_state:
+	if npc_has_watch_state:
+		if npc.can_see_player():
 			transitioned.emit(self, "watch")
 
 func check_other_states():

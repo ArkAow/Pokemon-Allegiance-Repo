@@ -64,9 +64,8 @@ func try_transition_to_idle_state():
 			transitioned.emit(self, "idle")
 
 func try_transition_to_watch_state():
-	var distance_to_player = (player.global_position - npc.global_position).length()
-	if distance_to_player < DETECTION_DISTANCE:
-		if npc_has_watch_state:
+	if npc_has_watch_state:
+		if npc.can_see_player():
 			transitioned.emit(self, "watch")
 
 func check_other_states():
