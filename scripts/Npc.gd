@@ -26,7 +26,7 @@ func _process(delta):
 		velocity.y -= GRAVITY * delta
 	move_and_slide()
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_detecting_player():
 		cast_ray_to_player()
 
