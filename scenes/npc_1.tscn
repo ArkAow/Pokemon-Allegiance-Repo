@@ -362,7 +362,12 @@ sprite_texture = ExtResource("1_6wlth")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="CanSeePlayerRay" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, 3)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 3
+
+[node name="IsSeeingPlayerRay" type="RayCast3D" parent="."]
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3

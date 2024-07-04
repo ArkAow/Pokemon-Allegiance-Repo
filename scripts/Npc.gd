@@ -10,7 +10,8 @@ class_name Npc
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite3D = $Sprite3D
-@onready var ray: RayCast3D = $RayCast3D
+@onready var can_see_ray: RayCast3D = $CanSeePlayerRay
+@onready var is_seeing_ray: RayCast3D = $IsSeeingPlayerRay
 
 const GRAVITY: float = 9.8
 var looking_direction: Vector2 = Vector2.ZERO
@@ -20,6 +21,7 @@ func _ready():
 	change_skin()
 	anim_tree.active = true
 	spawn_position = Vector3(global_position.x, 0, global_position.z)
+	set_ray_to_looking_dir()
 
 func _process(delta):
 	if not is_on_floor():
@@ -55,6 +57,7 @@ func compute_looking_direction(_direction: Vector3):
 		if look_direction.x == 0:
 			look_direction.y = last_looked_direction.y
 	looking_direction = look_direction
+	set_ray_to_looking_dir()
 
 func is_detecting_player()->bool:
 	var player = get_tree().get_first_node_in_group("Player")
@@ -63,10 +66,22 @@ func is_detecting_player()->bool:
 
 func cast_ray_to_player():
 	var player = get_tree().get_first_node_in_group("Player")
-	ray.target_position = player.global_position - global_position
+	can_see_ray.target_position = player.global_position - global_position
 
 func can_see_player()->bool:
-	var target = ray.get_collider()
+	var target = can_see_ray.get_collider()
+	if target is Player:
+		return true
+	return false
+
+func set_ray_to_looking_dir():
+	var x_dir := looking_direction.x 
+	var y_dir := 0.0
+	var z_dir := looking_direction.y
+	is_seeing_ray.target_position = Vector3(x_dir, y_dir, z_dir).normalized() * 3
+
+func is_seeing_player()->bool:
+	var target = is_seeing_ray.get_collider()
 	if target is Player:
 		return true
 	return false
