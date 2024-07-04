@@ -29,7 +29,7 @@ func compute_waiting_direction():
 #---------Manage States---------
 func try_transition_to_watch_state():
 	if npc_has_watch_state:
-		if npc.can_see_player():
+		if npc.is_seeing_player():
 			transitioned.emit(self, "watch")
 
 func check_other_states():
