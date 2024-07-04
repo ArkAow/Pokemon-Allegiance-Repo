@@ -1,15 +1,23 @@
-[gd_scene load_steps=32 format=3 uid="uid://c1ksljtm6ma8w"]
+[gd_scene load_steps=34 format=3 uid="uid://b0w5tp3cbmsy4"]
 
-[ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="1_6wlth"]
-[ext_resource type="Script" path="res://scripts/Npc.gd" id="1_nboj4"]
-[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_v73i8"]
-[ext_resource type="Script" path="res://scripts/npcState/NpcWatch.gd" id="4_uxihp"]
-[ext_resource type="Script" path="res://scripts/npcState/NpcWalk.gd" id="6_h0sbi"]
-[ext_resource type="Script" path="res://scripts/npcState/NpcWait.gd" id="6_heymw"]
+[ext_resource type="Script" path="res://scripts/Npc.gd" id="1_43l4g"]
+[ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="2_26653"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_6h3f4"]
+[ext_resource type="Script" path="res://scripts/npcState/NpcWait.gd" id="4_38t78"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
 height = 0.75
 radius = 0.2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
+transparency = 1
+blend_mode = 1
+albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
+
+[sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
+material = SubResource("StandardMaterial3D_3qaxa")
+radius = 3.0
+height = 6.0
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -114,6 +122,66 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a0l2s"]
+resource_name = "idle_south_east"
+length = 2.2
+loop_mode = 1
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f27ap"]
+resource_name = "idle_south_west"
+length = 2.2
+loop_mode = 1
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -280,6 +348,8 @@ _data = {
 "idle_east": SubResource("Animation_h6ppy"),
 "idle_north": SubResource("Animation_07nl2"),
 "idle_south": SubResource("Animation_iqga7"),
+"idle_south_east": SubResource("Animation_a0l2s"),
+"idle_south_west": SubResource("Animation_f27ap"),
 "idle_west": SubResource("Animation_lk1en"),
 "run_east": SubResource("Animation_ygybb"),
 "run_north": SubResource("Animation_i45v5"),
@@ -299,6 +369,12 @@ animation = &"idle_west"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_fsdj4"]
 animation = &"idle_east"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yh3gb"]
+animation = &"idle_south_west"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gxy8f"]
+animation = &"idle_south_east"
+
 [sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_0de1v"]
 blend_point_0/node = SubResource("AnimationNodeAnimation_207cb")
 blend_point_0/pos = Vector2(0, 1)
@@ -308,6 +384,10 @@ blend_point_2/node = SubResource("AnimationNodeAnimation_l8q10")
 blend_point_2/pos = Vector2(-1, 0)
 blend_point_3/node = SubResource("AnimationNodeAnimation_fsdj4")
 blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_yh3gb")
+blend_point_4/pos = Vector2(-1, 1)
+blend_point_5/node = SubResource("AnimationNodeAnimation_gxy8f")
+blend_point_5/pos = Vector2(1, 1)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_43oni"]
@@ -344,41 +424,37 @@ states/Run/position = Vector2(482, 97)
 states/Start/position = Vector2(203, 97)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_thaaw")]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
-transparency = 1
-blend_mode = 1
-albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
-
-[sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
-material = SubResource("StandardMaterial3D_3qaxa")
-radius = 3.0
-height = 6.0
-
-[node name="Npc_1" type="CharacterBody3D"]
-script = ExtResource("1_nboj4")
-sprite_texture = ExtResource("1_6wlth")
+[node name="WaitingNpc" type="CharacterBody3D"]
+script = ExtResource("1_43l4g")
+sprite_texture = ExtResource("2_26653")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
 [node name="CanSeePlayerRay" type="RayCast3D" parent="."]
+visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
 
 [node name="IsSeeingPlayerRay" type="RayCast3D" parent="."]
+visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
+
+[node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("SphereMesh_bhmrk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.4, 0, 0, 0, 2.36354, 0.173648, 0, -0.416756, 0.984808, 0, 0, 0)
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_6wlth")
+texture = ExtResource("2_26653")
 hframes = 6
-vframes = 4
+vframes = 5
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2
@@ -399,18 +475,9 @@ parameters/Idle/blend_position = Vector2(0.00306439, 0)
 parameters/Run/blend_position = Vector2(0.393204, 0.851852)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("2_v73i8")
+script = ExtResource("3_6h3f4")
 initial_state = NodePath("Wait")
 
-[node name="Watch" type="Node3D" parent="StateMachine"]
-script = ExtResource("4_uxihp")
-
-[node name="Walk" type="Node3D" parent="StateMachine"]
-script = ExtResource("6_h0sbi")
-
 [node name="Wait" type="Node3D" parent="StateMachine"]
-script = ExtResource("6_heymw")
-base_look_direction = Vector2(0, -1)
-
-[node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
-mesh = SubResource("SphereMesh_bhmrk")
+script = ExtResource("4_38t78")
+base_look_direction = Vector2(1, 0)

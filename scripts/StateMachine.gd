@@ -7,6 +7,7 @@ var current_state: State
 var states: Dictionary = {}
 
 func _ready():
+	await $"..".ready
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child

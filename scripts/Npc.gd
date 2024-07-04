@@ -14,14 +14,13 @@ class_name Npc
 @onready var is_seeing_ray: RayCast3D = $IsSeeingPlayerRay
 
 const GRAVITY: float = 9.8
-var looking_direction: Vector2 = Vector2.ZERO
+var looking_direction: Vector2 = Vector2(0,1)
 var spawn_position: Vector3
 
 func _ready():
 	change_skin()
 	anim_tree.active = true
 	spawn_position = Vector3(global_position.x, 0, global_position.z)
-	set_ray_to_looking_dir()
 
 func _process(delta):
 	if not is_on_floor():
