@@ -1,9 +1,11 @@
-[gd_scene load_steps=34 format=3 uid="uid://b0w5tp3cbmsy4"]
+[gd_scene load_steps=41 format=3 uid="uid://b0w5tp3cbmsy4"]
 
 [ext_resource type="Script" path="res://scripts/Npc.gd" id="1_43l4g"]
 [ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="2_26653"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_6h3f4"]
+[ext_resource type="Texture2D" uid="uid://dbl5nieg5g0u1" path="res://assets/bubble/alert-bubble.png" id="3_ytc88"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcWait.gd" id="4_38t78"]
+[ext_resource type="Script" path="res://scripts/npcState/NpcAlert.gd" id="6_s4to2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
 height = 0.75
@@ -18,6 +20,45 @@ albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
 material = SubResource("StandardMaterial3D_3qaxa")
 radius = 3.0
 height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38dwl"]
+atlas = ExtResource("3_ytc88")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jt3o"]
+atlas = ExtResource("3_ytc88")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtjgk"]
+atlas = ExtResource("3_ytc88")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aji5h"]
+atlas = ExtResource("3_ytc88")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_kc05a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38dwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtjgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aji5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38dwl")
+}],
+"loop": true,
+"name": &"alert_bubble",
+"speed": 12.0
+}]
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -433,19 +474,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
 [node name="CanSeePlayerRay" type="RayCast3D" parent="."]
-visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
 
 [node name="IsSeeingPlayerRay" type="RayCast3D" parent="."]
-visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
 
 [node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("SphereMesh_bhmrk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -455,6 +493,11 @@ texture_filter = 0
 texture = ExtResource("2_26653")
 hframes = 6
 vframes = 5
+
+[node name="Bubble" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.666608, 0)
+sprite_frames = SubResource("SpriteFrames_kc05a")
+animation = &"alert_bubble"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2
@@ -481,3 +524,6 @@ initial_state = NodePath("Wait")
 [node name="Wait" type="Node3D" parent="StateMachine"]
 script = ExtResource("4_38t78")
 base_look_direction = Vector2(1, 0)
+
+[node name="Alert" type="Node3D" parent="StateMachine"]
+script = ExtResource("6_s4to2")

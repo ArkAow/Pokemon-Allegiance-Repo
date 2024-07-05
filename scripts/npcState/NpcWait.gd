@@ -7,6 +7,7 @@ class_name NpcWait
 var npc_has_watch_state: bool
 var npc_has_walk_state: bool
 var npc_has_idle_state: bool
+var npc_has_alert_state: bool
 
 func enter():
 	set_npc_state()
@@ -17,6 +18,7 @@ func enter():
 	compute_waiting_direction()
 
 func update(_delta):
+	try_transition_to_alert_state()
 	try_transition_to_watch_state()
 
 #---------Manage animation---------
@@ -27,12 +29,18 @@ func compute_waiting_direction():
 	anim_tree.set("parameters/Idle/blend_position", npc.looking_direction)
 
 #---------Manage States---------
+func try_transition_to_alert_state():
+	if npc_has_alert_state:
+		if npc.is_seeing_player():
+			transitioned.emit(self, "alert")
+
 func try_transition_to_watch_state():
 	if npc_has_watch_state:
 		if npc.is_seeing_player():
 			transitioned.emit(self, "watch")
 
 func check_other_states():
+	npc_has_alert_state = is_state_present("alert")
 	npc_has_watch_state = is_state_present("watch")
 	npc_has_walk_state = is_state_present("walk")
 	npc_has_idle_state = is_state_present("idle")

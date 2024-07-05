@@ -12,6 +12,7 @@ class_name Npc
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var can_see_ray: RayCast3D = $CanSeePlayerRay
 @onready var is_seeing_ray: RayCast3D = $IsSeeingPlayerRay
+@onready var bubble: AnimatedSprite3D = $Bubble
 
 const GRAVITY: float = 9.8
 var looking_direction: Vector2 = Vector2(0,1)
@@ -21,6 +22,7 @@ func _ready():
 	change_skin()
 	anim_tree.active = true
 	spawn_position = Vector3(global_position.x, 0, global_position.z)
+	bubble.visible = false
 
 func _process(delta):
 	if not is_on_floor():

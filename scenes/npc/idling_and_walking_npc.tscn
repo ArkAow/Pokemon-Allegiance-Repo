@@ -1,8 +1,9 @@
-[gd_scene load_steps=35 format=3 uid="uid://c1ksljtm6ma8w"]
+[gd_scene load_steps=41 format=3 uid="uid://c1ksljtm6ma8w"]
 
 [ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="1_6wlth"]
 [ext_resource type="Script" path="res://scripts/Npc.gd" id="1_nboj4"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="2_v73i8"]
+[ext_resource type="Texture2D" uid="uid://dbl5nieg5g0u1" path="res://assets/bubble/alert-bubble.png" id="3_j4ari"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcIdle.gd" id="4_oq0ha"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcWalk.gd" id="6_h0sbi"]
 
@@ -19,6 +20,45 @@ albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
 material = SubResource("StandardMaterial3D_3qaxa")
 radius = 3.0
 height = 6.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38dwl"]
+atlas = ExtResource("3_j4ari")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0jt3o"]
+atlas = ExtResource("3_j4ari")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gtjgk"]
+atlas = ExtResource("3_j4ari")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aji5h"]
+atlas = ExtResource("3_j4ari")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jxq3h"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38dwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0jt3o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gtjgk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aji5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38dwl")
+}],
+"loop": true,
+"name": &"alert_bubble",
+"speed": 12.0
+}]
 
 [sub_resource type="Animation" id="Animation_besal"]
 length = 0.001
@@ -123,6 +163,66 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_a0l2s"]
+resource_name = "idle_south_east"
+length = 2.2
+loop_mode = 1
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [25, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite3D:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_f27ap"]
+resource_name = "idle_south_west"
+length = 2.2
+loop_mode = 1
+step = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [24, 1]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -283,66 +383,6 @@ tracks/1/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_f27ap"]
-resource_name = "idle_south_west"
-length = 2.2
-loop_mode = 1
-step = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [24, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
-[sub_resource type="Animation" id="Animation_a0l2s"]
-resource_name = "idle_south_east"
-length = 2.2
-loop_mode = 1
-step = 2.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [25, 1]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite3D:flip_h")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nus61"]
 _data = {
 "RESET": SubResource("Animation_besal"),
@@ -434,19 +474,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
 [node name="CanSeePlayerRay" type="RayCast3D" parent="."]
-visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
 
 [node name="IsSeeingPlayerRay" type="RayCast3D" parent="."]
-visible = false
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
 debug_shape_thickness = 3
 
 [node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
-visible = false
 mesh = SubResource("SphereMesh_bhmrk")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
@@ -456,6 +493,11 @@ texture_filter = 0
 texture = ExtResource("1_6wlth")
 hframes = 6
 vframes = 5
+
+[node name="Bubble" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.666608, 0)
+sprite_frames = SubResource("SpriteFrames_jxq3h")
+animation = &"alert_bubble"
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2
