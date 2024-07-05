@@ -11,7 +11,6 @@ func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	anim_state.travel("Idle")
-	npc.bubble.animation_finished.connect(play_alert_bubble_animation)
 	manage_npc_bubble_enter()
 
 func update(_delta):
@@ -22,6 +21,7 @@ func exit():
 
 #---------Manage Animations---------
 func manage_npc_bubble_enter():
+	npc.bubble.animation_finished.connect(play_alert_bubble_animation)
 	npc.bubble.visible = true
 	npc.bubble.play("pop_bubble")
 
