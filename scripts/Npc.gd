@@ -11,20 +11,22 @@ class_name Npc
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite3D = $Sprite3D
 @onready var can_see_ray: RayCast3D = $Detection/CanSeePlayerRay
-@onready var is_seeing_ray_1: RayCast3D = $Detection/IsSeeingPlayerRay1
-@onready var is_seeing_ray_2: RayCast3D = $Detection/IsSeeingPlayerRay2
-@onready var is_seeing_ray_3: RayCast3D = $Detection/IsSeeingPlayerRay3
 @onready var bubble: AnimatedSprite3D = $Bubble
 
 const GRAVITY: float = 9.8
 var looking_direction: Vector2 = Vector2(0,1)
 var spawn_position: Vector3
+var angle_cone_of_vision := deg_to_rad(60.0)
+var angle_between_rays := deg_to_rad(5.0)
+var ray_list: Array[RayCast3D] = []
 
 func _ready():
+	generate_raycasts()
 	change_skin()
 	anim_tree.active = true
 	spawn_position = Vector3(global_position.x, 0, global_position.z)
 	bubble.visible = false
+	
 
 func _process(delta):
 	if not is_on_floor():
@@ -78,18 +80,30 @@ func can_see_player()->bool:
 	return false
 
 func set_ray_to_looking_dir():
+	pass
 	var x_dir := looking_direction.x 
 	var y_dir := 0.0
 	var z_dir := looking_direction.y
 	var dir := Vector3(x_dir, y_dir, z_dir).normalized()
-	is_seeing_ray_1.target_position = dir.rotated(basis.y,deg_to_rad(5)) * 3
-	is_seeing_ray_2.target_position = dir * 3
-	is_seeing_ray_3.target_position = dir.rotated(basis.y,deg_to_rad(-5)) * 3
+	var index := 0
+	for ray in ray_list:
+		var angle := angle_between_rays * (index - ray_list.size() / 2.0)
+		ray.target_position = dir.rotated(basis.y, angle) * 3
+		index += 1
 
 func is_seeing_player()->bool:
-	var target1 = is_seeing_ray_1.get_collider()
-	var target2 = is_seeing_ray_2.get_collider()
-	var target3 = is_seeing_ray_3.get_collider()
-	if (target1 is Player) or (target2 is Player) or (target3 is Player):
-		return true
+	for ray in ray_list:
+		var target = ray.get_collider()
+		if target is Player:
+			return true
 	return false
+
+func generate_raycasts():
+	var ray_counts := angle_cone_of_vision / angle_between_rays
+	var y_offset := 0.2
+	for index in ray_counts:
+		var ray := RayCast3D.new()
+		add_child(ray)
+		ray.translate(Vector3(0,y_offset,0))
+		ray.enabled = true
+		ray_list.append(ray)
