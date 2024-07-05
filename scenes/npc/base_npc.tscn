@@ -1,10 +1,11 @@
-[gd_scene load_steps=41 format=3 uid="uid://b0w5tp3cbmsy4"]
+[gd_scene load_steps=58 format=3 uid="uid://b0w5tp3cbmsy4"]
 
 [ext_resource type="Script" path="res://scripts/Npc.gd" id="1_43l4g"]
 [ext_resource type="Texture2D" uid="uid://bc2i3iwikevcp" path="res://assets/characters/npc/blue-npc.png" id="2_26653"]
 [ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_6h3f4"]
 [ext_resource type="Texture2D" uid="uid://dbl5nieg5g0u1" path="res://assets/bubble/alert-bubble.png" id="3_ytc88"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcWait.gd" id="4_38t78"]
+[ext_resource type="Texture2D" uid="uid://b0br77t7sva4s" path="res://assets/bubble/pop-bubble.png" id="4_fd0e1"]
 [ext_resource type="Script" path="res://scripts/npcState/NpcAlert.gd" id="6_s4to2"]
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_oi3op"]
@@ -37,6 +38,70 @@ region = Rect2(256, 0, 128, 128)
 atlas = ExtResource("3_ytc88")
 region = Rect2(384, 0, 128, 128)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_8ybmt"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(896, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2popu"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rbgm0"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vxdn0"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sbpeo"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kr4cg"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j87uc"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_31hba"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_s76aw"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0nq2i"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nsnlg"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n2dwq"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_860hs"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_exm8r"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_flad3"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bt6bs"]
+atlas = ExtResource("4_fd0e1")
+region = Rect2(896, 0, 128, 128)
+
 [sub_resource type="SpriteFrames" id="SpriteFrames_kc05a"]
 animations = [{
 "frames": [{
@@ -58,6 +123,70 @@ animations = [{
 "loop": true,
 "name": &"alert_bubble",
 "speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8ybmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2popu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rbgm0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vxdn0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sbpeo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kr4cg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j87uc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31hba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_31hba")
+}],
+"loop": false,
+"name": &"depop_bubble",
+"speed": 16.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s76aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_s76aw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0nq2i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nsnlg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n2dwq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_860hs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_exm8r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_flad3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bt6bs")
+}],
+"loop": false,
+"name": &"pop_bubble",
+"speed": 15.0
 }]
 
 [sub_resource type="Animation" id="Animation_besal"]
@@ -510,7 +639,9 @@ vframes = 5
 [node name="Bubble" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.666608, 0)
 sprite_frames = SubResource("SpriteFrames_kc05a")
-animation = &"alert_bubble"
+animation = &"depop_bubble"
+frame = 8
+frame_progress = 1.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2

@@ -11,18 +11,24 @@ func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	anim_state.travel("Idle")
-	manage_npc_bubble()
-	play_alert_bubble_animation()
+	manage_npc_bubble_enter()
 
 func update(_delta):
 	try_transition_to_wait_state()
 
 func exit():
-	manage_npc_bubble(false)
+	manage_npc_bubble_exit()
 
 #---------Manage Animations---------
-func manage_npc_bubble(is_bubble_visible: bool = true):
-	npc.bubble.visible = is_bubble_visible
+func manage_npc_bubble_enter():
+	npc.bubble.animation_finished.connect(play_alert_bubble_animation)
+	npc.bubble.visible = true
+	npc.bubble.play("pop_bubble")
+
+func manage_npc_bubble_exit():
+	npc.bubble.play("depop_bubble")
+	await get_tree().create_timer(0.56).timeout
+	npc.bubble.visible = false
 
 func play_alert_bubble_animation():
 	npc.bubble.play("alert_bubble")
