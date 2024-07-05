@@ -23,9 +23,6 @@ func update(_delta):
 
 #---------Manage animation---------
 func compute_waiting_direction():
-	if base_look_direction != Vector2.ZERO:
-		var temp = Vector3(base_look_direction.x, 0, base_look_direction.y)
-		npc.compute_looking_direction(temp)
 	anim_tree.set("parameters/Idle/blend_position", npc.looking_direction)
 
 #---------Manage States---------

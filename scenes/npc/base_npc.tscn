@@ -154,7 +154,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"depop_bubble",
-"speed": 16.0
+"speed": 24.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -186,7 +186,7 @@ animations = [{
 }],
 "loop": false,
 "name": &"pop_bubble",
-"speed": 15.0
+"speed": 24.0
 }]
 
 [sub_resource type="Animation" id="Animation_besal"]
@@ -603,6 +603,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
 [node name="Detection" type="Node3D" parent="."]
+visible = false
 
 [node name="CanSeePlayerRay" type="RayCast3D" parent="Detection"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
@@ -628,10 +629,9 @@ vframes = 5
 
 [node name="Bubble" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.666608, 0)
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_kc05a")
 animation = &"depop_bubble"
-frame = 8
-frame_progress = 1.0
 
 [node name="NavigationAgent3D" type="NavigationAgent3D" parent="."]
 path_desired_distance = 0.2

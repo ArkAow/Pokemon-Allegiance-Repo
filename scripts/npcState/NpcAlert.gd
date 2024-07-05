@@ -27,7 +27,7 @@ func manage_npc_bubble_enter():
 
 func manage_npc_bubble_exit():
 	npc.bubble.play("depop_bubble")
-	await get_tree().create_timer(0.56).timeout
+	await get_tree().create_timer(0.375).timeout
 	npc.bubble.visible = false
 
 func play_alert_bubble_animation():

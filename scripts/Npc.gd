@@ -7,6 +7,8 @@ class_name Npc
 @export var max_distance_from_base_pos: float = 5
 ##The range, in meter, at which the npc can detect the player
 @export_range(0, 5) var DETECTION_DISTANCE: float = 3.0
+##The looking direction the npc starts at (if the npc waits, it's his looking dir)
+@export var base_look_direction: Vector2 = Vector2.ZERO
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite3D = $Sprite3D
@@ -27,7 +29,7 @@ func _ready():
 	anim_tree.active = true
 	spawn_position = Vector3(global_position.x, 0, global_position.z)
 	bubble.visible = false
-	
+	compute_looking_direction(Vector3(base_look_direction.x,0,base_look_direction.y))
 
 func _process(delta):
 	if not is_on_floor():
