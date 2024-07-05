@@ -608,6 +608,12 @@ shape = SubResource("CylinderShape3D_oi3op")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
 target_position = Vector3(0, 0, 3)
 
+[node name="IsSeeingPlayerRay" type="RayCast3D" parent="Detection"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.2, 0)
+target_position = Vector3(0, 0, 3)
+debug_shape_custom_color = Color(0.853871, 0.359001, 0.320193, 1)
+debug_shape_thickness = 3
+
 [node name="DebugDetectionRange" type="MeshInstance3D" parent="Detection"]
 mesh = SubResource("SphereMesh_u5o8b")
 skeleton = NodePath("../..")
