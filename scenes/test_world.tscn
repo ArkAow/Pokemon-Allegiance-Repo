@@ -9,7 +9,7 @@
 [ext_resource type="Shader" path="res://scenes/tilt_shift.gdshader" id="4_y3m6a"]
 [ext_resource type="PackedScene" uid="uid://dppe660wl8uy" path="res://scenes/tree/tree_big.tscn" id="5_t2fkx"]
 [ext_resource type="PackedScene" uid="uid://bn5wypn8s1rjd" path="res://scenes/bush/bush_big.tscn" id="6_hnbvv"]
-[ext_resource type="PackedScene" uid="uid://bfr8wv4y6cmhl" path="res://scenes/npc/idling_and_watching_npc.tscn" id="9_62gfp"]
+[ext_resource type="PackedScene" uid="uid://bfr8wv4y6cmhl" path="res://scenes/npc/idling_and_watchi.tscn" id="9_62gfp"]
 [ext_resource type="PackedScene" uid="uid://b0w5tp3cbmsy4" path="res://scenes/npc/waiting_npc.tscn" id="10_5qtg0"]
 [ext_resource type="PackedScene" uid="uid://c1ksljtm6ma8w" path="res://scenes/npc/idling_and_walking_npc.tscn" id="10_ewofe"]
 [ext_resource type="Texture2D" uid="uid://wm4tvqovvgyq" path="res://assets/characters/npc/green-npc.png" id="10_ob773"]

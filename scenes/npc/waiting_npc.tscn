@@ -11,13 +11,13 @@
 height = 0.75
 radius = 0.2
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3qaxa"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cphpf"]
 transparency = 1
 blend_mode = 1
 albedo_color = Color(0.803922, 0.14902, 0, 0.435294)
 
 [sub_resource type="SphereMesh" id="SphereMesh_bhmrk"]
-material = SubResource("StandardMaterial3D_3qaxa")
+material = SubResource("StandardMaterial3D_cphpf")
 radius = 3.0
 height = 6.0
 
@@ -473,18 +473,20 @@ sprite_texture = ExtResource("2_26653")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.009, 0)
 shape = SubResource("CylinderShape3D_oi3op")
 
-[node name="CanSeePlayerRay" type="RayCast3D" parent="."]
+[node name="Detection" type="Node3D" parent="."]
+visible = false
+
+[node name="CanSeePlayerRay" type="RayCast3D" parent="Detection"]
 target_position = Vector3(0, 0, 3)
 debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 3
 
-[node name="IsSeeingPlayerRay" type="RayCast3D" parent="."]
+[node name="IsSeeingPlayerRay" type="RayCast3D" parent="Detection"]
 target_position = Vector3(0, 0, 3)
-debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 3
+debug_shape_custom_color = Color(1, 0.614053, 0.555934, 1)
 
-[node name="DebugDetectionRange" type="MeshInstance3D" parent="."]
+[node name="DebugDetectionRange" type="MeshInstance3D" parent="Detection"]
 mesh = SubResource("SphereMesh_bhmrk")
+skeleton = NodePath("../..")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(2.4, 0, 0, 0, 2.36354, 0.173648, 0, -0.416756, 0.984808, 0, 0, 0)
