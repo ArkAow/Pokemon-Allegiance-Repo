@@ -10,8 +10,10 @@ class_name Npc
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite3D = $Sprite3D
-@onready var can_see_ray: RayCast3D = $CanSeePlayerRay
-@onready var is_seeing_ray: RayCast3D = $IsSeeingPlayerRay
+@onready var can_see_ray: RayCast3D = $Detection/CanSeePlayerRay
+@onready var is_seeing_ray_1: RayCast3D = $Detection/IsSeeingPlayerRay1
+@onready var is_seeing_ray_2: RayCast3D = $Detection/IsSeeingPlayerRay2
+@onready var is_seeing_ray_3: RayCast3D = $Detection/IsSeeingPlayerRay3
 @onready var bubble: AnimatedSprite3D = $Bubble
 
 const GRAVITY: float = 9.8
@@ -79,10 +81,15 @@ func set_ray_to_looking_dir():
 	var x_dir := looking_direction.x 
 	var y_dir := 0.0
 	var z_dir := looking_direction.y
-	is_seeing_ray.target_position = Vector3(x_dir, y_dir, z_dir).normalized() * 3
+	var dir := Vector3(x_dir, y_dir, z_dir).normalized()
+	is_seeing_ray_1.target_position = dir.rotated(basis.y,deg_to_rad(5)) * 3
+	is_seeing_ray_2.target_position = dir * 3
+	is_seeing_ray_3.target_position = dir.rotated(basis.y,deg_to_rad(-5)) * 3
 
 func is_seeing_player()->bool:
-	var target = is_seeing_ray.get_collider()
-	if target is Player:
+	var target1 = is_seeing_ray_1.get_collider()
+	var target2 = is_seeing_ray_2.get_collider()
+	var target3 = is_seeing_ray_3.get_collider()
+	if (target1 is Player) or (target2 is Player) or (target3 is Player):
 		return true
 	return false
