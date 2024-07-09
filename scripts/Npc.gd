@@ -3,12 +3,16 @@ class_name Npc
 
 ##The png file that will be the npc's appearence
 @export var sprite_texture: Texture2D
-##The max distance at which the npc can be from spawn point
+##The max distance at which the npc can be from spawn point, by default it's 5 meters
 @export var max_distance_from_base_pos: float = 5
-##The range, in meter, at which the npc can detect the player
+##The range, in meter, at which the npc can detect the player, by default it's 3 meters
 @export_range(0, 5) var DETECTION_DISTANCE: float = 3.0
-##The looking direction the npc starts at (if the npc waits, it's his looking dir)
+##The looking direction the npc starts at (if the npc waits, it's his looking dir), by default it's (0, 0)
 @export var base_look_direction: Vector2 = Vector2.ZERO
+##The dialogue object that will use the NPC to talk, leave null if npc has no dialogue
+@export var dialogue_ressource: DialogueResource
+##At what part of the dialogue the npc starts, by default it's "start"
+@export var dialogue_start: String = "start"
 
 @onready var anim_tree: AnimationTree = $AnimationTree
 @onready var sprite: Sprite3D = $Sprite3D
@@ -100,3 +104,9 @@ func is_seeing_player()->bool:
 			if target is Player:
 				return true
 	return false
+
+func dialogue_actioned():
+	if is_instance_valid(dialogue_ressource):
+		DialogueManager.show_example_dialogue_balloon(dialogue_ressource, dialogue_start)
+	else:
+		printerr("no dialogue ressource setted")

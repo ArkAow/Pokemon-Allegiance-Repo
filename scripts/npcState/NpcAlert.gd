@@ -15,6 +15,8 @@ func enter():
 
 func update(_delta):
 	try_transition_to_wait_state()
+	if Input.is_action_pressed("ui_accept"):
+		npc.dialogue_actioned()
 
 func exit():
 	manage_npc_bubble_exit()
