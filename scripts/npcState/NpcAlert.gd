@@ -21,17 +21,22 @@ func exit():
 
 #---------Manage Animations---------
 func manage_npc_bubble_enter():
+	if npc.bubble.animation_finished.is_connected(set_npc_bubble_visibility):
+		npc.bubble.animation_finished.disconnect(set_npc_bubble_visibility)
 	npc.bubble.animation_finished.connect(play_alert_bubble_animation)
-	npc.bubble.visible = true
+	set_npc_bubble_visibility(true)
 	npc.bubble.play("pop_bubble")
 
 func manage_npc_bubble_exit():
+	npc.bubble.animation_finished.connect(set_npc_bubble_visibility)
 	npc.bubble.play("depop_bubble")
-	await get_tree().create_timer(0.375).timeout
-	npc.bubble.visible = false
 
 func play_alert_bubble_animation():
+	npc.bubble.animation_finished.disconnect(play_alert_bubble_animation)
 	npc.bubble.play("alert_bubble")
+
+func set_npc_bubble_visibility(visibility: bool = false):
+	npc.bubble.visible = visibility
 
 #---------Manage States---------
 func try_transition_to_wait_state():
