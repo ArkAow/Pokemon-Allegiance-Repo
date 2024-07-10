@@ -1,12 +1,16 @@
 ~ start
 
-Nathan: [[Hi|Hello|Howdy]], this is some dialogue.
-Nathan: Here are some choices.
-- First one
-	Nathan: You picked the first one.
-- Second one
-	Nathan: You picked the second one.
-- Start again => start
-- End the conversation => END
-Nathan: For more information see the online documentation.
+Zoubib: [[Coucou|Baballe|Zomb]], c'est maxence chatelier, je suis retenue prisonnier dans ce corp.
+Zoubib: Par pitié aide moi, je dois retrouver sébite
+Zoubib: Vas-tu m'aider ?
+- Oui
+	Zoubib: Sympa mon gars, maintenant faut reformer la monkey familly ou quoi ahaha j'adore la bite
+	
+- NOOOOOON
+	Zoubib: enclenchement du bombardement à 36 rue henry IV, 33000 t'y survivera pas pti con
+- Repete => start
+- Pete => END
+
+Nathan: non nocturne pas la bite ...
+
 => END

@@ -11,34 +11,17 @@ func enter():
 	set_npc_state()
 	player = get_tree().get_first_node_in_group("Player")
 	anim_state.travel("Idle")
-	manage_npc_bubble_enter()
+	bubble_manager.manage_npc_bubble_enter(bubble_manager.animation_type.ALERT)
 
 func update(_delta):
 	try_transition_to_wait_state()
+
+func physics_update(_delta):
 	if Input.is_action_pressed("ui_accept"):
 		npc.dialogue_actioned()
 
 func exit():
-	manage_npc_bubble_exit()
-
-#---------Manage Animations---------
-func manage_npc_bubble_enter():
-	if npc.bubble.animation_finished.is_connected(set_npc_bubble_visibility):
-		npc.bubble.animation_finished.disconnect(set_npc_bubble_visibility)
-	npc.bubble.animation_finished.connect(play_alert_bubble_animation)
-	set_npc_bubble_visibility(true)
-	npc.bubble.play("pop_bubble")
-
-func manage_npc_bubble_exit():
-	npc.bubble.animation_finished.connect(set_npc_bubble_visibility)
-	npc.bubble.play("depop_bubble")
-
-func play_alert_bubble_animation():
-	npc.bubble.animation_finished.disconnect(play_alert_bubble_animation)
-	npc.bubble.play("alert_bubble")
-
-func set_npc_bubble_visibility(visibility: bool = false):
-	npc.bubble.visible = visibility
+	bubble_manager.manage_npc_bubble_exit()
 
 #---------Manage States---------
 func try_transition_to_wait_state():

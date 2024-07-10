@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b02xkytp88ah4"]
+[gd_scene load_steps=16 format=3 uid="uid://b02xkytp88ah4"]
 
 [ext_resource type="MeshLibrary" uid="uid://dv1oqxo08darl" path="res://MeshLibrary/world_mesh_lib.tres" id="1_6y8oq"]
 [ext_resource type="PackedScene" uid="uid://dbim3qljfyn1g" path="res://scenes/sky_and_light.tscn" id="1_hxunn"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://b0w5tp3cbmsy4" path="res://scenes/npc/base_npc.tscn" id="10_5qtg0"]
 [ext_resource type="Texture2D" uid="uid://wm4tvqovvgyq" path="res://assets/characters/npc/green-npc.png" id="10_ob773"]
 [ext_resource type="Resource" uid="uid://c28w7kyxxnnmn" path="res://dialogues/test.dialogue" id="11_uujew"]
+[ext_resource type="Resource" uid="uid://cad41fcd1m3ig" path="res://dialogues/test1.dialogue" id="12_crc8n"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_tsqki"]
 shader = ExtResource("4_y3m6a")
@@ -132,7 +133,7 @@ dialogue_ressource = ExtResource("11_uujew")
 [node name="WaitingNpc2" parent="." instance=ExtResource("10_5qtg0")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.20958, 1.81791, -15.1147)
 base_look_direction = Vector2(0, 1)
-dialogue_ressource = ExtResource("11_uujew")
+dialogue_ressource = ExtResource("12_crc8n")
 
 [node name="Player" parent="." instance=ExtResource("2_mhncx")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.48946, -3)

@@ -9,11 +9,13 @@ const GRAVITY: float = 9.8
 @onready var npc: CharacterBody3D = $"../.."
 
 var anim_tree: AnimationTree
+var bubble_manager: NpcBubbleManager
 var anim_state
 var state_machine: StateMachine
 var player: Player
 
 func set_npc_state():
+	bubble_manager = npc.get_node("BubbleManager")
 	anim_tree = npc.get_node("AnimationTree")
 	anim_state = anim_tree.get("parameters/playback")
 	state_machine = get_parent()

@@ -1,5 +1,4 @@
-extends CharacterBody3D
-class_name Npc
+class_name Npc extends CharacterBody3D
 
 ##The png file that will be the npc's appearence
 @export var sprite_texture: Texture2D
